@@ -80,23 +80,12 @@ let myCar: CarInterface = {
 
 class Car implements CarInterface {
   constructor(
-    make: string,
-    model: string,
-    engine: string,
-    year: number,
-    price: number
-  ) {
-    (this.make = make),
-      (this.model = model),
-      (this.engine = engine),
-      (this.year = year),
-      (this.price = price);
-  }
-  make: string;
-  model: string;
-  engine: string;
-  year: number;
-  price: number;
+    public make: string,
+    public model: string,
+    public engine: string,
+    public year: number,
+    public price: number
+  ) {}
 
   sellCar() {
     return `For just $${Math.floor(this.price)}.99 you can buy a ${this.make} ${
@@ -105,5 +94,33 @@ class Car implements CarInterface {
   }
 }
 
-let newCar = new Car("VW", "GULF", "V8 Diesel", 2019, 40_000);
-console.log(newCar.sellCar());
+// let newCar = new Car("VW", "GULF", "V8 Diesel", 2019, 40_000);
+// console.log(newCar.);
+
+// adding access modifiers
+
+// DOM Manipulation and Type Casting
+const inputMake = document.querySelector("#make") as HTMLInputElement;
+const inputModel = document.querySelector("#model") as HTMLInputElement;
+const inputEngine = document.querySelector("#engine") as HTMLInputElement;
+const inputYear = document.querySelector("#year") as HTMLInputElement;
+const inputPrice = document.querySelector("#price") as HTMLInputElement;
+const inputForm = document.querySelector("form")!;
+const niceRideDiv = document.querySelector(".niceRide") as HTMLDivElement;
+
+// adding an event listener on the form so we can setting the New car element manually we will set it
+inputForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const newCar = new Car(
+    inputMake.value,
+    inputModel.value,
+    inputEngine.value,
+    inputYear.valueAsNumber,
+    inputPrice.valueAsNumber
+  );
+
+  niceRideDiv.innerText = newCar.sellCar();
+
+  inputForm.reset();
+});

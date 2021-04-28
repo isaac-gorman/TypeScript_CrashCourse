@@ -54,15 +54,31 @@ let myCar = {
 };
 class Car {
     constructor(make, model, engine, year, price) {
-        (this.make = make),
-            (this.model = model),
-            (this.engine = engine),
-            (this.year = year),
-            (this.price = price);
+        this.make = make;
+        this.model = model;
+        this.engine = engine;
+        this.year = year;
+        this.price = price;
     }
     sellCar() {
         return `For just $${Math.floor(this.price)}.99 you can buy a ${this.make} ${this.model} ${this.engine}`;
     }
 }
-let newCar = new Car("VW", "GULF", "V8 Diesel", 2019, 41000);
-console.log(newCar.sellCar());
+// let newCar = new Car("VW", "GULF", "V8 Diesel", 2019, 40_000);
+// console.log(newCar.);
+// adding access modifiers
+// DOM Manipulation and Type Casting
+const inputMake = document.querySelector("#make");
+const inputModel = document.querySelector("#model");
+const inputEngine = document.querySelector("#engine");
+const inputYear = document.querySelector("#year");
+const inputPrice = document.querySelector("#price");
+const inputForm = document.querySelector("form");
+const niceRideDiv = document.querySelector(".niceRide");
+// adding an event listener on the form so we can setting the New car element manually we will set it
+inputForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const newCar = new Car(inputMake.value, inputModel.value, inputEngine.value, inputYear.valueAsNumber, inputPrice.valueAsNumber);
+    niceRideDiv.innerText = newCar.sellCar();
+    inputForm.reset();
+});

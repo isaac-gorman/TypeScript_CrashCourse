@@ -124,3 +124,37 @@ inputForm.addEventListener("submit", (e) => {
 
   inputForm.reset();
 });
+
+// Generics
+// - There may be instances where I will not know what types something will be
+function doSomething<T>(arg: T): T {
+  // do something
+  return arg;
+}
+doSomething<string>("5");
+
+interface book<T> {
+  id: number;
+  name: string;
+  data: T;
+}
+
+const aBook: book<number[]> = {
+  id: 3,
+  name: "title 1",
+  data: [1, 2, 3],
+};
+
+enum MotorcycleManufactures {
+  "Harley Davidson",
+  "Ducati",
+  "BMW",
+  "West Coast Chopper",
+}
+
+const myMotorCycle = {
+  year: 1998,
+  make: MotorcycleManufactures["Harley Davidson"],
+};
+
+console.log(myMotorCycle.make);

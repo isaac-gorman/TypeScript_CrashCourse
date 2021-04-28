@@ -82,3 +82,27 @@ inputForm.addEventListener("submit", (e) => {
     niceRideDiv.innerText = newCar.sellCar();
     inputForm.reset();
 });
+// Generics
+// - There may be instances where I will not know what types something will be
+function doSomething(arg) {
+    // do something
+    return arg;
+}
+doSomething("5");
+const aBook = {
+    id: 3,
+    name: "title 1",
+    data: [1, 2, 3],
+};
+var MotorcycleManufactures;
+(function (MotorcycleManufactures) {
+    MotorcycleManufactures[MotorcycleManufactures["Harley Davidson"] = 0] = "Harley Davidson";
+    MotorcycleManufactures[MotorcycleManufactures["Ducati"] = 1] = "Ducati";
+    MotorcycleManufactures[MotorcycleManufactures["BMW"] = 2] = "BMW";
+    MotorcycleManufactures[MotorcycleManufactures["West Coast Chopper"] = 3] = "West Coast Chopper";
+})(MotorcycleManufactures || (MotorcycleManufactures = {}));
+const myMotorCycle = {
+    year: 1998,
+    make: MotorcycleManufactures["Harley Davidson"],
+};
+console.log(myMotorCycle.make);
